@@ -13,9 +13,9 @@ CSV.foreach("db/TownHealthRecord.csv", headers:true) do |row|
   
   town = TownHealthRecord.where({
     town_name: row[0],
-    population_below_20: row[2],
-    population_above_65:  row[3],
-    per_capita_income: row[4],
+    population_below_20: row[2].gsub(/\D/, "").to_i,
+    population_above_65:  row[3].gsub(/\D/, "").to_i,
+    per_capita_income: row[4].gsub(/\D/, "").to_i,
     percentage_teen_births: row[13],
     infant_mortalities: row[10]
     }).first 
@@ -23,12 +23,14 @@ CSV.foreach("db/TownHealthRecord.csv", headers:true) do |row|
   if town.nil?
     town = TownHealthRecord.new( {
       :town_name => row[0],
-      :population_below_20 => row[2],
-      :population_above_65 => row[3],
-      :per_capita_income => row[4],
+      :population_below_20 => row[2].gsub(/\D/, "").to_i,
+      :population_above_65 => row[3].gsub(/\D/, "").to_i,
+      :per_capita_income => row[4].gsub(/\D/, "").to_i,
       :percentage_teen_births => row[13],
       :infant_mortalities => row[10] 
   })
+
+
     town.save!
   end
 

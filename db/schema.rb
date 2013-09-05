@@ -13,15 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20130903214949) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "town_health_records", force: true do |t|
-    t.string   "town_name"
-    t.integer  "population_below_20"
-    t.integer  "population_above_65"
-    t.integer  "per_capita_income"
-    t.float    "percentage_teen_births"
-    t.integer  "infant_mortalities"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.string  "town_name"
+    t.integer "population_below_20"
+    t.integer "population_above_65"
+    t.integer "per_capita_income"
+    t.float   "percentage_teen_births"
+    t.integer "infant_mortalities"
   end
 
 end

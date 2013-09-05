@@ -7,7 +7,6 @@ class CreateTownHealthRecords < ActiveRecord::Migration
       t.integer :per_capita_income
       t.float :percentage_teen_births
       t.integer :infant_mortalities
-      t.timestamps
     end
   end
 end
